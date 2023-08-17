@@ -1,0 +1,105 @@
+<!-- BANNER -->
+<section id="banner">
+  <div class="container">
+    <p>
+      <%= locals.description1 %> <br />
+      <%= locals.description2 %>
+    </p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section id="main">
+  <div class="container">
+    <div class="row">
+      <!-- CONTENT -->
+      <div id="content" class="col-8 col-12-medium">
+        <!-- POST -->
+        <article class="box post">
+          <ul class="box_search">
+            <% data.forEach ((post) => { %>
+            <li>
+              <header>
+                <h2>
+                  <a href="/singlePost/<%= post._id %>"><%= post.title %></a>
+                </h2>
+              </header>
+              <!-- 
+              <a href="/" class="image featured"
+                ><img src="images/pic04.jpg" alt=""
+              /></a> -->
+
+              <p class="cutoff_text"><%= post.body %></p>
+              <ul class="actions">
+                <li>
+                  <a
+                    href="/singlePost/<%= post._id %>"
+                    class="button icon solid fa-file"
+                    >Continuar lendo</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <% }) %>
+          </ul>
+        </article>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div id="sidebar" class="col-4 col-12-medium">
+        <!-- EXCERPTS -->
+        <section>
+          <ul class="divided">
+            <% data_side.forEach((singleData) => { %>
+            <li>
+              <!-- EXCERPT -->
+              <article class="box excerpt">
+                <header>
+                  <span class="date"
+                    ><%= singleData.createdAt.toDateString() %></span
+                  >
+                  <h3>
+                    <a href="/singlePost/<%= singleData._id %>"
+                      ><%= singleData.title %></a
+                    >
+                  </h3>
+                </header>
+                <p class="cutoff_text"><%= singleData.body %></p>
+              </article>
+            </li>
+            <% }) %>
+          </ul>
+        </section>
+
+        <!-- HIGHLIGHTS -->
+        <!-- <section>
+          <ul class="divided">
+            <li>
+              <article class="box highlight">
+                <header>
+                  <h3><a href="#">Something of note</a></h3>
+                </header>
+                <a href="#" class="image left"
+                  ><img src="images/pic06.jpg" alt=""
+                /></a>
+                <p>
+                  Phasellus sed laoreet massa id justo mattis pharetra. Fusce
+                  suscipit ligula vel quam viverra sit amet mollis tortor congue
+                  magna lorem ipsum dolor et quisque ut odio facilisis
+                  convallis. Etiam non nunc vel est suscipit convallis non id
+                  orci. Ut interdum tempus facilisis convallis. Etiam non nunc
+                  vel est suscipit convallis non id orci.
+                </p>
+                <ul class="actions">
+                  <li>
+                    <a href="#" class="button icon solid fa-file">Learn More</a>
+                  </li>
+                </ul>
+              </article>
+            </li>
+          </ul>
+        </section> -->
+      </div>
+    </div>
+  </div>
+</section>
