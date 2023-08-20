@@ -8,7 +8,7 @@ const getMainPage = async (req, res) => {
       description2: "tampouco bem interpretados",
     };
 
-    let perPage = 1;
+    let perPage = 5;
     let page = req.query.page || 1;
 
     const data = await Post.aggregate([{ $sort: { createdAt: -1 } }])
@@ -36,6 +36,25 @@ const getMainPage = async (req, res) => {
     console.log(error);
   }
 };
+
+// function insertPostData() {
+//   Post.insertMany([
+//     {
+//       title: "This is the Post Title #1",
+//       body: "This is the Post Body #1",
+//     },
+//     {
+//       title: "This is the Post Title #2",
+//       body: "This is the Post Body #2",
+//     },
+//     {
+//       title: "This is the Post Title #3",
+//       body: "This is the Post Body #3",
+//     },
+//   ]);
+// }
+
+// insertPostData();
 
 module.exports = {
   getMainPage,

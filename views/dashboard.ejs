@@ -1,0 +1,25 @@
+<!-- BANNER -->
+<section id="banner">
+  <div class="container">
+    <p>
+      <%= locals.description1 %> <br />
+      <%= locals.description2 %>
+    </p>
+  </div>
+</section>
+
+<div class="admin-title">
+  <div class="container">
+    <h3>Escreva um novo Post</h3>
+
+    <form action="/dashboard/add-post" method="post">
+      <label for="title">Title</label>
+      <input type="text" name="title" placeholder="Enter Post Title" />
+
+      <label for="body">Content</label>
+      <textarea name="body" cols="50" rows="10"></textarea>
+
+      <input type="submit" value="Add" class="btn" />
+    </form>
+  </div>
+</div>

@@ -4,6 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const expressLayout = require("express-ejs-layouts");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 
 const connectDB = require("./config/db");
@@ -17,6 +18,7 @@ connectDB();
 // MIDDLEWARES
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(
   session({
@@ -26,6 +28,7 @@ app.use(
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
     }),
+    // cookie: { maxAge: new Date { Date.now() + (3600000) } } \\for the cookie expiration
   })
 );
 
@@ -40,10 +43,14 @@ app.use(express.static("public"));
 const indexRouter = require("./routes/indexRouter");
 const aboutRouter = require("./routes/aboutRouter");
 const singlePostRouter = require("./routes/singlePostRouter");
+const adminRouter = require("./routes/adminRouter");
+const dashboardRouter = require("./routes/dashboardRouter");
 
 // USING PERSONAL MODULES
 app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/singlePost", singlePostRouter);
+app.use("/admin", adminRouter);
+app.use("/dashboard", dashboardRouter);
 
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
